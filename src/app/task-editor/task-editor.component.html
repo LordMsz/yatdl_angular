@@ -1,0 +1,13 @@
+<h2>My tasks ({{ tasks.length }})</h2>
+<ol>
+  <!-- <li>Install some basic environment</li>
+  <li>Learn Angular basics</li> -->
+  <li *ngFor="let t of tasks">{{t}}</li>
+</ol>
+
+<p *ngIf="inTaskTextValue">New task will be added: {{ inTaskTextValue }}</p>
+
+<form>
+  <input type="text" placeholder="Input task text..." name="taskText" [(ngModel)]="inTaskTextValue" />
+  <input type="submit" value="{{ btnSubmitText }}" (click)="submit()" />
+</form>
