@@ -25,3 +25,38 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+
+#Poznámky, postřehy, užitečné příkazy
+
+##ng
+
+###ng test
+
+Spuštění testů s výstupem o pokrytí kódu (coverage-istambul)
+Vytvoří výstup do složky "coverage", kde se dá v prohlížeči procházet
+
+    ng test --code-coverage
+
+Spuštění testů v režimu pro debuggování pomocí chrome debug
+"ChromeTestDebug" je klíč odkazující na konfiguraci karma.conf.js na sekci "customLaunchers"
+
+    ng test --browsers ChromeTestDebug
+
+###ng e2e
+
+TODO dopsat e2e testy
+
+###ng lint
+
+linter pro ? typescript; klasické lint rady, celkem dobré
+
+###ng server
+
+Klasické spuštění
+
+    ng serve --open
+
+Spuštění a poslouchání na všech IP hosta
+
+    ng serve --host 0.0.0.0
