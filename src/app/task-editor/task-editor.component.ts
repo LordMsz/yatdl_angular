@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
+/**
+ * Editor for a task item
+ */
 @Component({
   selector: 'app-task-editor',
   templateUrl: './task-editor.component.html',
