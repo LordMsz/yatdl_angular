@@ -34,4 +34,13 @@ describe('TaskEditorComponent', () => {
     expect(ol.childElementCount).toBe(1);
     expect(ol.children[0].textContent).toContain(taskText);
   });
+  it('should add a task with submit method', async(()=>{
+    component.inTaskTextValue = "New task";
+    fixture.detectChanges();
+    component.submit();
+    fixture.detectChanges();
+    expect(component.tasks.length).toBe(1);
+    expect(component.inTaskTextValue).toBeFalsy();
+    expect(fixture.debugElement.nativeElement.querySelector('ol li')).toBeDefined();
+  }));
 });
