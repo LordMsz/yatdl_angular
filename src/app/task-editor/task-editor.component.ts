@@ -10,9 +10,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TaskEditorComponent implements OnInit {
 
-  btnSubmitText : string = "Add task";
-  inTaskTextValue : string;
-  tasks : string[] = [];
+  btnSubmitText = 'Add task';
+  inTaskTextValue: string;
+  tasks: string[] = [];
 
 
   constructor() { }
@@ -20,7 +20,7 @@ export class TaskEditorComponent implements OnInit {
   ngOnInit() {
   }
 
-  submit(){
+  submit() {
     this.tasks.push(this.inTaskTextValue);
     this.inTaskTextValue = null;
   }
