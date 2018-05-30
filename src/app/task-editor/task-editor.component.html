@@ -5,9 +5,13 @@
   <li *ngFor="let t of tasks" (click)="taskClick(t)">{{t}}</li>
 </ol>
 
+<q>{{quotes[activeQuoteId]}}</q>
+
 <form>
   <input type="text" placeholder="Input task text..." name="taskText" [(ngModel)]="inTaskTextValue" />
   <input type="submit" value="{{ btnSubmitText }}" (click)="submit()" />
 </form>
 
 <p *ngIf="inTaskTextValue">New task will be added: {{ inTaskTextValue }}</p>
+
+<p (click)="redirectHome()"><a href="javascript:void(0);">Send me home</a></p>
