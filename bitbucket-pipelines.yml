@@ -26,3 +26,9 @@
 # not working, times out on:
 # npm ERR! code E429
 # npm ERR! 429 Too Many Requests: yargs-parser@https://registry.npmjs.org/yargs-parser/-/yargs-parser-10.0.0.tgz
+
+pipelines:
+  default:
+    - step:
+        script:
+          - echo "Commit with a Hello-worldish pipeline has been made!"
