@@ -43,4 +43,12 @@ describe('TaskEditorComponent', () => {
     expect(component.inTaskTextValue).toBeFalsy();
     expect(fixture.debugElement.nativeElement.querySelector('ol li')).toBeDefined();
   }));
+  it('should remove (existing) task with remove method', async(()=>{
+    const taskName = "Task to be removed";
+    component.tasks.push(taskName);
+    component.removeTask(taskName);
+
+    expect(component.tasks.length).toBe(0);
+  }));
+  //TODO: test removing not existing task to show error message (dependency injection?)
 });

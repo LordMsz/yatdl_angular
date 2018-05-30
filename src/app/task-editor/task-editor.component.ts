@@ -25,4 +25,18 @@ export class TaskEditorComponent implements OnInit {
     this.inTaskTextValue = null;
   }
 
+  taskClick(taskText: string) {
+    this.removeTask(taskText);
+  }
+
+  removeTask(taskText: string) {
+    for (let i = 0; i < this.tasks.length; i++) {
+      const item = this.tasks[i];
+
+      if (taskText == item) {
+        this.tasks.splice(i, 1);
+      }
+    }
+  }
+
 }
