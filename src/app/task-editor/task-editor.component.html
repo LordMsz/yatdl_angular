@@ -1,8 +1,6 @@
-<h2>My tasks ({{ tasks.length }})</h2>
+<h2>My tasks ({{ getTaskCount() }})</h2>
 <ol>
-  <!-- <li>Install some basic environment</li>
-  <li>Learn Angular basics</li> -->
-  <li *ngFor="let t of tasks" (click)="taskClick(t)">{{t}}</li>
+  <li *ngFor="let t of getTaskList()" (click)="taskClick(t)">{{t}}</li>
 </ol>
 
 <q>{{quotes[activeQuoteId]}}</q>

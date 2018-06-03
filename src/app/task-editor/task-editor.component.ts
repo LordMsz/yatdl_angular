@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { LocalStorageTaskService } from '../local-storage-task.service';
+import { TaskService } from '../abstraction/services/task-service';
 
 /**
  * Editor for a task item
@@ -11,13 +13,13 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class TaskEditorComponent implements OnInit {
 
+  private taskService: TaskService;
   private route: ActivatedRoute;
   private router: Router;
 
   activeQuoteId: number;
   btnSubmitText = 'Add task';
   inTaskTextValue: string;
-  tasks: string[] = [];
 
   // just to show possibilities of routing with parameter
   quotes: string[] = [
@@ -30,9 +32,10 @@ export class TaskEditorComponent implements OnInit {
   ];
 
 
-  constructor(route: ActivatedRoute, router: Router) {
+  constructor(taskService: TaskService, route: ActivatedRoute, router: Router) {
     this.route = route;
     this.router = router;
+    this.taskService = taskService;
 
     this.route.params.subscribe((response) => {
       this.activeQuoteId = response.quoteId;
@@ -43,7 +46,7 @@ export class TaskEditorComponent implements OnInit {
   }
 
   submit() {
-    this.tasks.push(this.inTaskTextValue);
+    this.taskService.addTask(this.inTaskTextValue);
     this.inTaskTextValue = null;
   }
 
@@ -52,17 +55,19 @@ export class TaskEditorComponent implements OnInit {
   }
 
   removeTask(taskText: string) {
-    for (let i = 0; i < this.tasks.length; i++) {
-      const item = this.tasks[i];
-
-      if (taskText === item) {
-        this.tasks.splice(i, 1);
-      }
-    }
+    this.taskService.removeTask(taskText);
   }
 
   redirectHome() {
     this.router.navigate(['']);
+  }
+
+  getTaskCount(): number {
+    return this.taskService.getTaskCount();
+  }
+
+  getTaskList(): string[] {
+    return this.taskService.getTaskList();
   }
 
 }

@@ -1,16 +1,31 @@
 import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { TaskEditorComponent } from './task-editor/task-editor.component';
+import { HomeComponent } from './home/home.component';
+import { AppRoutingModule } from './app-routing.module';
+import { TaskService } from './abstraction/services/task-service';
+import { MockTaskService } from './implementation/mock/services/mock-task-service';
+import { APP_BASE_HREF } from '@angular/common';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
         AppComponent,
-        TaskEditorComponent
+        TaskEditorComponent,
+        HomeComponent
       ],
-      imports: [ FormsModule ]
+      imports: [
+        BrowserModule,
+        FormsModule,
+        AppRoutingModule
+      ],
+      providers: [
+        { provide: TaskService, useClass: MockTaskService },
+        { provide: APP_BASE_HREF, useValue: '/' }
+      ],
     }).compileComponents();
   }));
   it('should create the app', async(() => {

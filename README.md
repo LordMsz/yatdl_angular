@@ -60,3 +60,17 @@ Klasické spuštění
 Spuštění a poslouchání na všech IP hosta
 
     ng serve --host 0.0.0.0
+
+###ng build
+
+Normall build (debug)
+
+    ng build
+
+Production (release) build is much smaller and optimized
+
+    ng buld --prod
+
+Produkční build s přesměrováním mimo root (třeba podsložka apod.)
+
+    ng build --prod --base-href="http://mysite.com/someangular..."
