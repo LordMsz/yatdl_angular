@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { LocalStorageTaskService } from '../local-storage-task.service';
 import { TaskService } from '../abstraction/services/task-service';
+// following "reference" is required even tho there is no explicit usage...
+import { LocalStorageTaskService } from '../implementation/services/local-storage-task.service';
 
 /**
  * Editor for a task item

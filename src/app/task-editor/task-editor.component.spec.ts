@@ -50,7 +50,7 @@ describe('TaskEditorComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-  it('should render simple task', () => {
+  it('should render simple task', async(() => {
     const taskText = 'A simple task';
     taskServiceMock.tasks.push(taskText);
     fixture.detectChanges();
@@ -58,7 +58,7 @@ describe('TaskEditorComponent', () => {
     expect(ol).toBeDefined();
     expect(ol.childElementCount).toBe(1);
     expect(ol.children[0].textContent).toContain(taskText);
-  });
+  }));
   it('should add a task with submit method', async(() => {
     component.inTaskTextValue = 'New task';
     fixture.detectChanges();
@@ -75,5 +75,24 @@ describe('TaskEditorComponent', () => {
 
     expect(taskServiceMock.tasks.length).toBe(0);
   }));
-  // TODO: test removing not existing task to show error message (dependency injection?)
+  it('should remove (existing) task with task click', async(() => {
+    const taskText = 'A simple task';
+    taskServiceMock.tasks.push(taskText);
+    fixture.detectChanges();
+    const ol: HTMLOListElement = fixture.debugElement.nativeElement.querySelector('ol');
+    expect(ol.children[0].textContent).toContain(taskText);
+    (ol.children[0] as HTMLLIElement).click();
+    fixture.detectChanges();
+    expect(taskServiceMock.tasks.length).toBe(0);
+  }));
+  it('should not fail removing inexistent task', async(() => {
+    expect(taskServiceMock.tasks.length).toBe(0);
+    expect(function () { component.removeTask('Inexistent'); }).not.toThrow();
+
+    const taskName = 'Task to be removed';
+    taskServiceMock.tasks.push(taskName);
+    expect(taskServiceMock.tasks.length).toBe(1);
+
+    expect(function () { component.removeTask('Inexistent'); }).not.toThrow();
+  }));
 });

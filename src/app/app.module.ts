@@ -9,7 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 
 // services
 import { TaskService } from './abstraction/services/task-service';
-import { LocalStorageTaskService } from './local-storage-task.service';
+import { LocalStorageTaskService } from './implementation/services/local-storage-task.service';
 
 // components
 import { AppComponent } from './app.component';
